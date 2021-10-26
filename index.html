@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Axis Bank | POC</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css?ver=1.1">
+</head>
+
+<body>
+    <main>
+        <header class="mb-3">
+            <div class="container">
+                <div class="header-title">
+                    <a href="javascript:void(0);" class="logo">
+                        <img src="./assets/images/logo.png" alt="Axis bank logo" class="img-fluid">
+                    </a>
+                </div>
+            </div>
+        </header>
+        <div class="container mb-3">
+            <a href="javascript:void(0);" class="prev-cta d-none">
+            </a>
+            <a href="javascript:void(0);" class="add-customer cta" data-target="#addCustomer" data-toggle="modal">Add
+                Customer</a>
+        </div>
+        <div class="first-page common">
+            <div class="container">
+                <h3 class="mb-3">Customers Data</h3>
+                <div class="text-center">
+                    <a href="javascript:void(0)" class="cta" id="getCustomersList">Customers list</a>
+                </div>
+                <ul class="customers-data">
+                </ul>
+            </div>
+        </div>
+        <div class="second-page common d-none">
+            <div class="container">
+                <h3 class="mb-3">Customer Details</h3>
+                <div class="customers-data"></div>
+            </div>
+        </div>
+        <div class="modal fade add-customer" tabindex="-1" role="dialog" id="addCustomer">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <a href="javascript:void(0);" class="close-icon" data-dismiss="modal"></a>
+                        <h2 class="text-center mb-3">Personal Information</h2>
+                        
+                        <form id="customerForm" method="post">
+                            <div class="mb-3">
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-v2" id="cName" name="cName">
+                                    <label class="label">Name</label>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-v2" id="cMailId" name="cMailId">
+                                    <label class="label">Email ID</label>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-v2" id="cContactNo"
+                                        name="cContactNo" maxlength="10">
+                                    <label class="label">Contact No</label>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <div class="form-group">
+                                    <textarea type="text" class="form-control form-control-v2" id="cAddress"
+                                        name="cAddress"></textarea>
+                                    <label class="label">Address</label>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="custom-btn">Submit</button>
+                                <button type="reset" class="custom-btn reset-btn">Reset</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+    <!-- script file -->
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/popper.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.12.0/jquery.validate.min.js"></script>
+    <script src="./js/script.js"></script>
+</body>
+
+</html>
