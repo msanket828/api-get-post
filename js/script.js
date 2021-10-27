@@ -109,37 +109,6 @@ $(document).ready(function () {
   })
 
 
-  //After click on individual card customer details appear Get Request
-  let currentPersonsId;
-  let indCustomerData;
-  $('body').on('click', '.first-page .customers-data li', function () {
-    $('.prev-cta').removeClass('d-none');
-    currentPersonsId = $(this).attr('data-id');
-    $('.first-page').addClass('d-none');
-    $('.second-page').removeClass('d-none');
-    $.get(url + '/' + currentPersonsId, function (data, status) {      
-        indCustomerData = `<div class="personal-info">
-        <div class="d-flex align-items-center mb-2">
-        <span>Name: </span>
-        <p>${data.name}</p>
-        </div>
-        <div class="d-flex align-items-center mb-2">
-        <span>Email id:</span>
-        <p>${data.email}</p>
-        </div>
-        <div class="d-flex align-items-center mb-2">
-        <span>Contact No: </span>
-        <p>${data.phone}</p>
-        </div>                          
-        <div class="d-flex align-items-start mb-2">
-        <span>City: </span>
-        <p>${data.address}</p>
-        </div>                      
-        </div>
-        `;
-        $('.second-page .customers-data').append(indCustomerData);      
-    })
-  })
 
   //Post request
   $('#customerForm').on('submit', function (e) {
@@ -152,9 +121,9 @@ $(document).ready(function () {
       // alert(true);
       // console.log(user);
       // let url = "https://api.techved.com/api/User";
-      url = "https://api.techved.com/api/User?name=" + name + "&email=" + email + "&address=" + address + "&phone=" + phone;
+      postUrl = "https://api.techved.com/api/User?name=" + name + "&email=" + email + "&address=" + address + "&phone=" + phone;
       // $.post(url,
-      //   {        
+      //   {
       //     name: "name",
       //     email: "email",
       //     phone: "phone",
@@ -166,11 +135,12 @@ $(document).ready(function () {
       //   })
 
 
-      $.post(url, function (data, status) {
+      $.post(postUrl, function (data, status) {
         alert("Data: " + data + "\nStatus: " + status);
         $('.first-page .customers-data li').remove();
         //retrieve data after post
-        $.get('https://api.techved.com/api/User', function (data, status) {
+        $.get(url, function (data, status) {
+          console.log(data);
           $(data).each(function () {
             let htmlData = ` <li data-id="${this.id}">
               <div class="d-flex align-items-center mb-2">
@@ -191,4 +161,38 @@ $(document).ready(function () {
 
 
   });
+
+
+   //After click on individual card customer details appear Get Request   
+   let currentPersonsId;
+   let indCustomerData;
+   $('body').on('click', '.first-page .customers-data li', function () {
+     $('.prev-cta').removeClass('d-none');
+     currentPersonsId = $(this).attr('data-id');              
+     $('.first-page').addClass('d-none');
+     $('.second-page').removeClass('d-none');
+     console.log(url);
+     $.get(`${url}/${currentPersonsId}`, function (data, status) {                     
+           indCustomerData = `<div class="personal-info">
+           <div class="d-flex align-items-center mb-2">
+           <span>Name: </span>
+           <p>${data.name}</p>
+           </div>
+           <div class="d-flex align-items-center mb-2">
+           <span>Email id:</span>
+           <p>${data.email}</p>
+           </div>
+           <div class="d-flex align-items-center mb-2">
+           <span>Contact No: </span>
+           <p>${data.phone}</p>
+           </div>
+           <div class="d-flex align-items-start mb-2">
+           <span>City: </span>
+           <p>${data.address}</p>
+           </div>
+           </div>
+           `;     
+         $('.second-page .customers-data').append(indCustomerData);
+     })
+   })
 })

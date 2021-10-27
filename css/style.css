@@ -368,6 +368,7 @@ header {
 .modal-body {
   position: relative;
   padding: 30px 20px;
+  background: #FFF;
 }
 
 .close-icon {
@@ -388,6 +389,7 @@ header {
   padding: 6px 0;
   border-bottom: 1px solid #eee;
   box-shadow: none;
+  background: transparent;
   font-family: "Montserrat-Regular";
   font-size: 14px;
   line-height: 17px;
